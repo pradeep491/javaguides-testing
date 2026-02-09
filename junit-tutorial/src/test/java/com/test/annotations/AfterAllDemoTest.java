@@ -1,22 +1,32 @@
 package com.test.annotations;
 
 import com.test.Calculator;
-import com.test.CalculatorTest;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BeforeEachDemoTest {
+public class AfterAllDemoTest {
 
-    private Calculator calculator;
+    private static Calculator calculator;
 
-    @BeforeEach
+    /*@BeforeEach
     void setUp(){
         calculator = new Calculator();
         System.out.println("setUp() invoked...!");
+    }*/
+    @BeforeAll
+    static void setUpBeforeClass(){
+        calculator = new Calculator();
+        System.out.println("setUp before class method is calling...!");
+    }
+
+    @AfterAll
+    static void tearDownAfterClass(){
+        calculator = null;
+        System.out.println("after all method invoked");
     }
     @Test
     @DisplayName("Addition of the Two numbers")

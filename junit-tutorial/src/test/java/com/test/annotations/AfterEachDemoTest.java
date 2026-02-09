@@ -1,15 +1,14 @@
 package com.test.annotations;
 
 import com.test.Calculator;
-import com.test.CalculatorTest;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BeforeEachDemoTest {
+public class AfterEachDemoTest {
 
     private Calculator calculator;
 
@@ -46,6 +45,12 @@ public class BeforeEachDemoTest {
         int result = calculator.devide(6, 3);
         assertEquals(2, result);
         System.out.println("devideTest() calling...!");
+    }
+
+    @AfterEach
+    void tearDown(){
+        System.out.println("executed after the test case");
+        calculator = null;
     }
 
 }
